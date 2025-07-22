@@ -1,0 +1,10 @@
+streamlit
+pandas
+scikit-learn
+sentence-transformers
+transformers
+torch
+python-dotenv
+matplotlib         
+textblob           
+nltk 
