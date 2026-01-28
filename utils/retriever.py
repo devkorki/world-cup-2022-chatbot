@@ -10,9 +10,8 @@ class Retriever:
         self.threshold = threshold  # Similarity threshold
 
     def fit(self, corpus):
-        # Normalize corpus (optional, but improves quality)
+        # Normalize corpus 
         self.corpus = [doc.strip().lower() for doc in corpus]
-        # Encode and ensure it's a NumPy array
         self.corpus_embeddings = np.array(self.model.encode(self.corpus, convert_to_tensor=False))
 
     def retrieve(self, query, top_k=5):
@@ -25,7 +24,7 @@ class Retriever:
         top_indices = np.argsort(similarities)[::-1][:top_k]
         results = [(self.corpus[i], similarities[i]) for i in top_indices if similarities[i] >= self.threshold]
 
-        # Optional debug
+        #  debug
         if not results:
             print(f"[Retriever] No relevant tweets found for: '{query}'")
         else:
